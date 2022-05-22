@@ -1,0 +1,22 @@
+import os
+
+def main():
+    directory = input("Please enter the directory the file will be saved to: ")
+    filename = input("Please enter the file name: ")
+    name = input("Please enter your name: ")
+    address = input("Please enter your address: ")
+    phone_number = input("Please enter your phone number: ")
+    
+    if os.pathisdir(directory):
+        writeFile = open(os.path.join(directory, filename), 'w')
+        writeFile.write(name+ ',' +address+ ',' +phone_number+ '\n')
+        writeFile.close()
+        
+        print("Contents of file: ")
+        readFile = open(os.path.join(directory, filename), 'r')
+        for line in readFile:
+            print(line)
+        readFile.close()
+    else:
+        print("We're sorry but that directory does not exist, please try again. ")
+main()
